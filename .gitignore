@@ -1,3 +1,6 @@
+#Visual Studio Folder
+.vs/
+
 # Logs
 logs
 *.log
