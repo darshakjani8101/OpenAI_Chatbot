@@ -10,6 +10,6 @@ chatRoutes.post(
   validate(chatCompletionValidator),
   verifyToken,
   generateChatCompletion
-); //domain/api/v1/chats/new
+); //domain/api/v1/chat/new
 
 export default chatRoutes;
