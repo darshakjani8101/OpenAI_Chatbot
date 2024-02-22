@@ -1,7 +1,7 @@
 import User from "../models/User.js";
 import { compare, hash } from "bcrypt";
 import { createToken } from "../utils/token-manager.js";
-import { COOKIE_DOMAIN, COOKIE_NAME, COOKIE_PATH } from "../utils/constants.js";
+import { COOKIE_NAME, COOKIE_PATH } from "../utils/constants.js";
 //get all users
 export const getAllUsers = async (req, res, next) => {
     try {
@@ -27,7 +27,7 @@ export const userSignup = async (req, res, next) => {
         //clear cookie, create new token and store new cookie
         res.clearCookie(COOKIE_NAME, {
             path: COOKIE_PATH,
-            domain: COOKIE_DOMAIN,
+            //domain: COOKIE_DOMAIN,
             httpOnly: true,
             signed: true,
         });
@@ -36,7 +36,7 @@ export const userSignup = async (req, res, next) => {
         expires.setDate(expires.getDate() + 7);
         res.cookie(COOKIE_NAME, token, {
             path: COOKIE_PATH,
-            domain: COOKIE_DOMAIN,
+            //domain: COOKIE_DOMAIN,
             expires,
             httpOnly: true,
             signed: true,
@@ -67,7 +67,7 @@ export const userLogin = async (req, res, next) => {
         //clear cookie, create new token and store new cookie
         res.clearCookie(COOKIE_NAME, {
             path: COOKIE_PATH,
-            domain: COOKIE_DOMAIN,
+            //domain: COOKIE_DOMAIN,
             httpOnly: true,
             signed: true,
         });
@@ -76,7 +76,7 @@ export const userLogin = async (req, res, next) => {
         expires.setDate(expires.getDate() + 7);
         res.cookie(COOKIE_NAME, token, {
             path: COOKIE_PATH,
-            domain: COOKIE_DOMAIN,
+            //domain: COOKIE_DOMAIN,
             expires,
             httpOnly: true,
             signed: true,
