@@ -39,6 +39,7 @@ export const userSignup = async (
     res.clearCookie(COOKIE_NAME, {
       path: COOKIE_PATH,
       //domain: COOKIE_DOMAIN,
+      sameSite: "none",
       httpOnly: true,
       signed: true,
     });
@@ -48,6 +49,7 @@ export const userSignup = async (
     res.cookie(COOKIE_NAME, token, {
       path: COOKIE_PATH,
       //domain: COOKIE_DOMAIN,
+      sameSite: "none",
       expires,
       httpOnly: true,
       signed: true,
@@ -85,6 +87,7 @@ export const userLogin = async (
     res.clearCookie(COOKIE_NAME, {
       path: COOKIE_PATH,
       //domain: COOKIE_DOMAIN,
+      sameSite: "none",
       httpOnly: true,
       signed: true,
     });
@@ -94,6 +97,7 @@ export const userLogin = async (
     res.cookie(COOKIE_NAME, token, {
       path: COOKIE_PATH,
       //domain: COOKIE_DOMAIN,
+      sameSite: "none",
       expires,
       httpOnly: true,
       signed: true,
