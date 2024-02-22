@@ -40,6 +40,7 @@ export const userSignup = async (
       path: COOKIE_PATH,
       //domain: COOKIE_DOMAIN,
       sameSite: "none",
+      secure: true,
       httpOnly: true,
       signed: true,
     });
@@ -50,6 +51,7 @@ export const userSignup = async (
       path: COOKIE_PATH,
       //domain: COOKIE_DOMAIN,
       sameSite: "none",
+      secure: true,
       expires,
       httpOnly: true,
       signed: true,
@@ -88,6 +90,7 @@ export const userLogin = async (
       path: COOKIE_PATH,
       //domain: COOKIE_DOMAIN,
       sameSite: "none",
+      secure: true,
       httpOnly: true,
       signed: true,
     });
@@ -98,6 +101,7 @@ export const userLogin = async (
       path: COOKIE_PATH,
       //domain: COOKIE_DOMAIN,
       sameSite: "none",
+      secure: true,
       expires,
       httpOnly: true,
       signed: true,
