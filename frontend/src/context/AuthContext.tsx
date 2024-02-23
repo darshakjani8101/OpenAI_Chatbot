@@ -40,7 +40,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     checkStatus();
   }, []);
 
-  const signup = async (name: string, email: string, password: string) => {};
+  //const signup = async (name: string, email: string, password: string) => {};
+  const signup = async () => {};
   const login = async (email: string, password: string) => {
     const data = await loginUser(email, password);
 
