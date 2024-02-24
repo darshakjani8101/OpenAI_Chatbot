@@ -119,4 +119,31 @@ export const verifyUser = async (req, res, next) => {
         return res.status(500).json({ message: "ERROR", cause: error.message });
     }
 };
+//user logout
+export const userLogout = async (req, res, next) => {
+    try {
+        const user = await User.findById(res.locals.jwtData.id);
+        if (!user) {
+            return res
+                .status(401)
+                .json({ message: "User not registered or token malfunctioned!" });
+        }
+        if (user._id.toString() !== res.locals.jwtData.id) {
+            return res.status(401).json({ message: "Permissions didn't match!" });
+        }
+        res.clearCookie(COOKIE_NAME, {
+            path: COOKIE_PATH,
+            //domain: COOKIE_DOMAIN,
+            sameSite: "none",
+            secure: true,
+            httpOnly: true,
+            signed: true,
+        });
+        return res.status(200).json({ message: "OK" });
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "ERROR", cause: error.message });
+    }
+};
 //# sourceMappingURL=user-controllers.js.map

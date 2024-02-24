@@ -10,6 +10,7 @@ import {
   sendChatRequest,
 } from "../helpers/api-communicator";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 type Message = {
   role: "user" | "assistant";
@@ -20,9 +21,15 @@ const Chat = () => {
   const auth = useAuth();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [chatMessages, setChatMessages] = useState<Message[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // fetch if the user's cookie is still valid then skip login
+    if (!auth?.user) {
+      return navigate("/login");
+    }
+  }, [auth]);
+
+  useEffect(() => {
     async function getChats() {
       if (auth?.isLoggedIn && auth.user) {
         try {
@@ -51,8 +58,12 @@ const Chat = () => {
     setChatMessages((prev) => [...prev, newMessage]);
 
     //get new message
-    const chatData = await sendChatRequest(content);
-    setChatMessages([...chatData.chats]);
+    try {
+      const chatData = await sendChatRequest(content);
+      setChatMessages([...chatData.chats]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleDeleteChats = async () => {
