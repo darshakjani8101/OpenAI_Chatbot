@@ -9,6 +9,7 @@ import {
   checkAuthStatus,
   loginUser,
   logoutUser,
+  signupUser,
 } from "../helpers/api-communicator";
 import toast from "react-hot-toast";
 
@@ -51,8 +52,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     checkStatus();
   }, []);
 
-  //const signup = async (name: string, email: string, password: string) => {};
-  const signup = async () => {};
+  const signup = async (name: string, email: string, password: string) => {
+    try {
+      toast.loading("Signing Up", { id: "signup" });
+      const data = await signupUser(name, email, password);
+
+      if (data) {
+        setUser({ name: data.name, email: data.email });
+        setIsLoggedIn(true);
+      }
+      toast.success("Signed Up Successfully", { id: "signup" });
+    } catch (error) {
+      console.log(error);
+      toast.error("Sign Up Failed", { id: "signup" });
+    }
+  };
 
   const login = async (email: string, password: string) => {
     try {
