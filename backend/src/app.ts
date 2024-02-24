@@ -10,7 +10,8 @@ config();
 const app = express();
 
 //middlewares
-const origin = "https://openai-chatbot-bxaa.onrender.com";
+const origin = "http://localhost:5173";
+//const origin = "https://openai-chatbot-bxaa.onrender.com";
 app.use(cors({ origin, credentials: true }));
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));

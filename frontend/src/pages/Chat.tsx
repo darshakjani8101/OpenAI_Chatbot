@@ -1,10 +1,15 @@
 import { Avatar, Box, Button, IconButton, Typography } from "@mui/material";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { red } from "@mui/material/colors";
 import ChatItem from "../components/chat/ChatItem";
 import { IoMdSend } from "react-icons/io";
-import { sendChatRequest } from "../helpers/api-communicator";
+import {
+  deleteUserChats,
+  getUserChats,
+  sendChatRequest,
+} from "../helpers/api-communicator";
+import toast from "react-hot-toast";
 
 type Message = {
   role: "user" | "assistant";
@@ -15,6 +20,27 @@ const Chat = () => {
   const auth = useAuth();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [chatMessages, setChatMessages] = useState<Message[]>([]);
+
+  useEffect(() => {
+    // fetch if the user's cookie is still valid then skip login
+    async function getChats() {
+      if (auth?.isLoggedIn && auth.user) {
+        try {
+          toast.loading("Loading Chats", { id: "loadchats" });
+          const data = await getUserChats();
+          if (data) {
+            setChatMessages([...data.chats]);
+          }
+          toast.success("Chats Loaded Successfully", { id: "loadchats" });
+        } catch (error) {
+          console.log(error);
+          toast.error("Chats Loading Failed", { id: "loadchats" });
+        }
+      }
+    }
+
+    getChats();
+  }, [auth]);
 
   const handleSubmit = async () => {
     const content = inputRef.current?.value as string;
@@ -27,6 +53,18 @@ const Chat = () => {
     //get new message
     const chatData = await sendChatRequest(content);
     setChatMessages([...chatData.chats]);
+  };
+
+  const handleDeleteChats = async () => {
+    try {
+      toast.loading("Deleting Chats", { id: "deletechats" });
+      await deleteUserChats();
+      setChatMessages([]);
+      toast.success("Chats Deleted Successfully", { id: "deletechats" });
+    } catch (error) {
+      console.log(error);
+      toast.error("Chats Deleting Failed", { id: "deletechats" });
+    }
   };
 
   return (
@@ -90,6 +128,7 @@ const Chat = () => {
                 bgcolor: red.A400,
               },
             }}
+            onClick={handleDeleteChats}
           >
             Clear Conversation
           </Button>

@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 import { checkAuthStatus, loginUser } from "../helpers/api-communicator";
+import toast from "react-hot-toast";
 
 type User = {
   name: string;
@@ -29,11 +30,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     // fetch if the user's cookie is still valid then skip login
     async function checkStatus() {
-      const data = await checkAuthStatus();
-
-      if (data) {
-        setUser({ name: data.name, email: data.email });
-        setIsLoggedIn(true);
+      try {
+        toast.loading("Signing In", { id: "login" });
+        const data = await checkAuthStatus();
+        if (data) {
+          setUser({ name: data.name, email: data.email });
+          setIsLoggedIn(true);
+        }
+        toast.success("Signed In Successfully", { id: "login" });
+      } catch (error) {
+        console.log(error);
+        toast.error("Sign In Failed", { id: "login" });
       }
     }
 
