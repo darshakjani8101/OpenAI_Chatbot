@@ -1,6 +1,6 @@
 # MERN Stack AI Chatbot
 
-This is an AI Chatbot application, inspired by ChatGPT, by using MERN Stack and OpenAI
+This is an AI Chatbot application, inspired by ChatGPT, by using MERN Stack and OpenAI.
 
 It's a customized chatbot where each message of the user is stored in DB and can be retrieved and deleted.
 
@@ -25,13 +25,13 @@ You can access the hosted application at https://openai-chatbot-bxaa.onrender.co
 
 ## Local Setup
 
-1. Clone the repository:
+### 1. Clone the repository:
 
 ```bash
 git clone https://github.com/darshakjani8101/OpenAI_Chatbot.git
 ```
 
-2. Install dependencies:
+### 2. Install dependencies:
 
 ```bash
 # Navigate to the backend directory
@@ -43,8 +43,8 @@ cd ../frontend
 npm install
 ```
 
-3. Set up environment variables:
-Create a .env file in the server directory and add the following variables:
+### 3. Set up environment variables:
+Create a .env file in the backend directory and add the following variables:
 
 ```bash
 OPEN_AI_SECRET=sk-your_openai_api_key
@@ -55,7 +55,18 @@ COOKIE_SECRET=your_cookie_secret
 PORT=5000
 ```
 
-4. Run the application:
+### 4. Set up local URLs:
+Modify below mentioned files in both backend and frontend directories and setup the following variables:
+
+```bash
+# Open backend/src/app.ts file and setup below variable
+const origin = "http://localhost:5173";
+
+# Open frontend/src/main.tsx file and setup below variable
+axios.defaults.baseURL = "http://localhost:5000/api/v1";
+```
+
+### 5. Run the application:
 
 ```bash
 # Start the backend
@@ -67,11 +78,13 @@ cd ../frontend
 npm run dev
 ```
 
-5. Access the application:
+### 6. Access the application:
 Open your web browser and visit http://localhost:5173 to access the MERN stack AI chatbot application.
 
 ## Contributors
-Darshak Jani
+### Darshak Jani
+#### Github: https://github.com/darshakjani8101
+#### LinkedIn: https://www.linkedin.com/in/darshakjani8101
 
 ## License
 This project is not licensed.
