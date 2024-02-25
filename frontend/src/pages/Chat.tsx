@@ -59,10 +59,13 @@ const Chat = () => {
 
     //get new message
     try {
+      toast.loading("Chatbot is typing", { id: "newmessage" });
       const chatData = await sendChatRequest(content);
       setChatMessages([...chatData.chats]);
+      toast.success("Respone Received", { id: "newmessage" });
     } catch (error) {
       console.log(error);
+      toast.error("Failed to Respond", { id: "newmessage" });
     }
   };
 
