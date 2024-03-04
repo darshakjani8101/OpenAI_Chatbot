@@ -8,17 +8,17 @@ It's a completely secure application using JWT Tokens, HTTP-Only Cookies, Signed
 
 ## Features
 
-- **User Authentication and Authorization System:** Implements user authentication and authorization using JWT tokens and HTTP-only cookies for secure access.
-- **Express-Validators Middleware:** Utilizes Express-Validators middleware to validate incoming data.
-- **Storing User's Chats in MongoDB:** Stores user chats in MongoDB for persistence and retrieval.
-- **Custom Authentication System:** Develops a custom authentication system for enhanced security.
-- **JWT Authorization Tokens:** Uses JWT tokens for authorization, ensuring secure communication between client and server.
-- **Protecting User Routes:** Secures user routes with verification checks to control access.
-- **Modern React App with Vite:** Builds a modern React application using Vite for fast and efficient development.
-- **Beautiful Chat UI with Material UI Library:** Creates a visually appealing chat UI using the Material UI library.
-- **Complete Responsive Design:** Ensures a responsive design for optimal user experience across devices.
-- **Integrating OpenAI with MERN Stack:** Integrates OpenAI for AI capabilities, creating a full-stack ChatGPT-like clone.
-- **Storing User Sessions:** Manages user sessions for seamless interaction and continuity.
+- User Authentication and Authorization System
+- Express-Validators Middleware
+- Storing User's Chats in MongoDB
+- Custom Authentication System
+- JWT Authorization Tokens
+- Protecting User Routes
+- Modern React App with Vite
+- Beautiful Chat UI with Material UI Library
+- Complete Responsive Design
+- Integrating OpenAI with MERN Stack
+- Storing User Sessions
 
 ## Hosted Application
 You can access the hosted application at https://openai-chatbot-bxaa.onrender.com
@@ -85,7 +85,4 @@ Open your web browser and visit http://localhost:5173 to access the MERN stack A
 ### Darshak Jani
 #### Github: https://github.com/darshakjani8101
 #### LinkedIn: https://www.linkedin.com/in/darshakjani8101
-
-## License
-This project is not licensed.
 
