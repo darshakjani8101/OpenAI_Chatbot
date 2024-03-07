@@ -22,6 +22,7 @@ It's a completely secure application using JWT Tokens, HTTP-Only Cookies, Signed
 
 ## Hosted Application
 You can access the hosted application at https://openai-chatbot-bxaa.onrender.com
+- Initial loading could take up to 1 minute as we have hosted it on a free hosting service.
 
 ## Local Setup
 
