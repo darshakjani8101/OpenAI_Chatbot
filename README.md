@@ -1,3 +1,9 @@
+<div align="center">
+  <br />
+      <img src="https://github.com/darshakjani8101/OpenAI_Chatbot/blob/main/frontend/public/readme_img.png" alt="Project Banner">
+  <br />
+</div>
+
 # MERN Stack AI Chatbot
 
 This is an AI Chatbot application, inspired by ChatGPT, by using MERN Stack and OpenAI.
